@@ -26,42 +26,53 @@ function start(client) {
     client.onMessage((message) => {
 
 
-        if (message.body.toUpperCase() === 'SIM') {
-            client.sendText(message.from, `${qualDia}`)
 
-        }
-
-        else if (
-            message.body === '1' ||
-            message.body === '2' ||
-            message.body === '3' ||
-            message.body === '4' ||
-            message.body === '5'
-        ) {
-            client.sendText(message.from, `${info}`)
-
-        }
-
-
-        else if (message.body.toUpperCase() === 'NÂO') {
-            client.sendText(message.from,
-                `Até mais!`
-            )
-        }
-
-
-        else if (message.body && message.isGroupMsg === false) {
+        if (message.isGroupMsg === false) {
             client
                 .sendText(message.from, ` ${text} `)
 
-                .then((result) => {
-                    console.log('Result: ', result); //return object success
-                })
-                .catch((erro) => {
-                    console.error('Error when sending: ', erro); //return object error
-                });
-        }
+            // .then((result) => {
+            //     console.log('Result: ', result); //return object success
+            // })
+            // .catch((erro) => {
+            //     console.error('Error when sending: ', erro); //return object error
+            // });
 
+            switch (message.body) {
+                case '1':
+                    client.sendText(message.from, `Sua consulta foi marcada para Segunda-Feira`)
+                    break
+                case '2':
+                    client.sendText(message.from, 'Sua consulta foi marcada para Terça-Feira')
+                    break
+
+                case '3':
+                    client.sendText(message.from, 'Sua consulta foi marcada para Quarta-Feira')
+                    break
+                case '4':
+                    client.sendText(message.from, 'Sua consulta foi marcada para Quinta-Feira')
+                    break
+                case '5':
+                    client.sendText(message.from, 'Sua consulta foi marcada para Sexta-Feira')
+                    break
+
+                default:
+                    break
+            }
+
+            if (message.body.toUpperCase() === 'SIM') {
+                client.sendText(message.from, `${qualDia}`)
+
+            }
+
+
+            else if (message.body.toUpperCase() === 'NÂO') {
+                client.sendText(message.from,
+                    `Até mais!`
+                )
+            }
+
+        }
 
     });
 }
