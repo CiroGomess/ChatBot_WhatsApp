@@ -13,14 +13,14 @@ venom
 var text = `Olá sou um Robô 🤖, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
 Digite SIM ou NÃO
 `
-var qualDia = `Qual dia da semana você deseja realizar a sua consulta?
+var qualDia = `Qual dia da semana você deseja realizar a sua consulta?\n
 1 = Segunda-Feira
 2 = Terça-Feira
 3 = Quarta-Feira
 4 = Quinra-Feira
 5 = Sexta-Feira`
 
-var info = `Etamos quase lá!\nAgora só falta você escolher a hora da sua consulta 😊`
+var info = `Etamos quase lá!\n\nAgora só falta você escolher a hora da sua consulta 😊`
 
 function start(client) {
     client.onMessage((message) => {
@@ -57,6 +57,13 @@ function start(client) {
 
             default: // Default será usado quando não entra em nem uma condição acima!!
                 client.sendText(message.from, `${text}`)
+
+                .then((result) => {	
+                    console.log('Result: ', result); //return object success	
+                })	
+                .catch((erro) => {	
+                    console.error('Error when sending: ', erro); //return object error	
+                });
 
                 break
         }
