@@ -13,18 +13,18 @@ venom
 
     // Salvar os dados que estão vindo no message.body pra dar o relatório final da consulta marcada.
 
-var text = `Olá sou um Robô 😊, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
+let text = `Olá sou um Robô 😊, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
 Digite SIM ou NÃO
 `
-var qualDia = `Qual dia da semana você deseja realizar a sua consulta?\n
+let qualDia = `Qual dia da semana você deseja realizar a sua consulta?\n
 1 = 📅 Segunda-Feira 
 2 = 📅 Terça-Feira
 3 = 📅 Quarta-Feira
 4 = 📅 Quinra-Feira
 5 = 📅 Sexta-Feira`
 
-var info = `Etamos quase lá!\n\nAgora só falta você escolher a hora da sua consulta 😊`
-var hora = `
+let info = `Etamos quase lá!\n\nAgora só falta você escolher a hora da sua consulta 😊`
+let hora = `
 A = 07:00 Horas 🕐 B = 07:30 Horas 🕐
 C = 08:00 Horas 🕐 D = 08:30 Horas 🕐
 E = 09:00 Horas 🕐 F = 09:30 Horas 🕐
