@@ -10,17 +10,31 @@ venom
 
     });
 
-var text = `Olá sou um Robô 🤖, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
+
+    // Salvar os dados que estão vindo no message.body pra dar o relatório final da consulta marcada.
+
+var text = `Olá sou um Robô 😊, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
 Digite SIM ou NÃO
 `
 var qualDia = `Qual dia da semana você deseja realizar a sua consulta?\n
-1 = Segunda-Feira
-2 = Terça-Feira
-3 = Quarta-Feira
-4 = Quinra-Feira
-5 = Sexta-Feira`
+1 = 📅 Segunda-Feira 
+2 = 📅 Terça-Feira
+3 = 📅 Quarta-Feira
+4 = 📅 Quinra-Feira
+5 = 📅 Sexta-Feira`
 
 var info = `Etamos quase lá!\n\nAgora só falta você escolher a hora da sua consulta 😊`
+var hora = `
+A = 07:00 Horas 🕐 B = 07:30 Horas 🕐
+C = 08:00 Horas 🕐 D = 08:30 Horas 🕐
+E = 09:00 Horas 🕐 F = 09:30 Horas 🕐
+G = 10:00 Horas 🕐 H = 10:30 Horas 🕐
+I = 11:00 Horas 🕐 J = 13:00 Horas 🕐
+K = 13:30 Horas 🕐 L = 14:00 Horas 🕐
+M = 14:30 Horas 🕐 N = 15:00 Horas 🕐
+O = 15:30 Horas 🕐 P = 16:00 Horas 🕐
+Q = 16:30 Horas 🕐 R = 17:00 Horas 🕐
+`
 
 function start(client) {
     client.onMessage((message) => {
@@ -36,34 +50,103 @@ function start(client) {
                 break
 
             case '1':
-                client.sendText(message.from, `Sua consulta foi marcada para Segunda-Feira\n${info}`)
+                client.sendText(message.from, `\n${info}\n${hora}`)
                 break
 
             case '2':
-                client.sendText(message.from, `Sua consulta foi marcada para Terça-Feira\n${info}  `)
+                client.sendText(message.from, `\n${info} \n${hora}`)
                 break
 
             case '3':
-                client.sendText(message.from, `Sua consulta foi marcada para Quarta-Feira\n${info}`)
+                client.sendText(message.from, `\n${info} \n${hora}`)
                 break
 
             case '4':
-                client.sendText(message.from, `Sua consulta foi marcada para Quinta-Feira\n${info}`)
+                client.sendText(message.from, `\n${info} \n${hora}`)
                 break
 
             case '5':
-                client.sendText(message.from, `Sua consulta foi marcada para Sexta-Feira\n${info}`)
+                client.sendText(message.from, `\n${info}\n${hora}`)
                 break
 
+            case 'A':
+                client.sendText(message.from, `Sua consulta está marcada para as 07:00 horas`)
+                break
+
+            case 'B':
+                client.sendText(message.from, `Sua consulta está marcada para as 07:30 horas`)
+                break
+
+            case 'C':
+                client.sendText(message.from, `Sua consulta está marcada para as 08:00 horas`)
+                break
+
+            case 'D':
+                client.sendText(message.from, `Sua consulta está marcada para as 08:30 horas`)
+                break
+
+            case 'E':
+                client.sendText(message.from, `Sua consulta está marcada para as 09:00 horas`)
+                break
+
+            case 'F':
+                client.sendText(message.from, `Sua consulta está marcada para as 09:30 horas`)
+                break
+
+            case 'G':
+                client.sendText(message.from, `Sua consulta está marcada para as 10:00 horas`)
+                break
+
+            case 'H':
+                client.sendText(message.from, `Sua consulta está marcada para as 10:30 horas`)
+                break
+
+            case 'I':
+                client.sendText(message.from, `Sua consulta está marcada para as 11:00 horas`)
+                break
+
+            case 'J':
+                client.sendText(message.from, `Sua consulta está marcada para as 13:00 horas`)
+                break
+            case 'K':
+                client.sendText(message.from, `Sua consulta está marcada para as 13:30 horas`)
+                break
+
+            case 'L':
+                client.sendText(message.from, `Sua consulta está marcada para as 14:00 horas`)
+                break
+
+            case 'M':
+                client.sendText(message.from, `Sua consulta está marcada para as 14:30 horas`)
+                break
+            case 'N':
+                client.sendText(message.from, `Sua consulta está marcada para as 15:00 horas`)
+                break
+
+            case 'O':
+                client.sendText(message.from, `Sua consulta está marcada para as 15:30 horas`)
+                break
+
+            case 'P':
+                client.sendText(message.from, `Sua consulta está marcada para as 16:00 horas`)
+                break
+
+            case 'Q':
+                client.sendText(message.from, `Sua consulta está marcada para as 16:30 horas`)
+                break
+
+            case 'R':
+                client.sendText(message.from, `Sua consulta está marcada para as 17:00 horas`)
+                break
             default: // Default será usado quando não entra em nem uma condição acima!!
                 client.sendText(message.from, `${text}`)
 
-                .then((result) => {	
-                    console.log('Result: ', result); //return object success	
-                })	
-                .catch((erro) => {	
-                    console.error('Error when sending: ', erro); //return object error	
-                });
+                    .then((result) => {
+                        console.log('Result: ', result); //return object success	
+                    })
+                    .catch((erro) => {
+                        console.error('Error when sending: ', erro); //return object error	
+                    });
 
                 break
         }
