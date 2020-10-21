@@ -3,17 +3,43 @@
 const venom = require('venom-bot');
 
 venom
-    .create()
+    .create(
+        'ZapBot OdontoAgenda',
+        (base64Qr, asciiQR) => {
+            console.log(asciiQR); // Optional to log the QR in the terminal
+            console.log("\n", typeof(asciiQR), "\n")
+            var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+                response = {};
+
+            if (matches.length !== 3) {
+                return new Error('Invalid input string');
+            }
+            response.type = matches[1];
+            response.data = new Buffer.from(matches[2], 'base64');
+
+            var imageBuffer = response;
+            require('fs').writeFile(
+                'out.png',
+                imageBuffer['data'],
+                'binary',
+                function(err) {
+                    if (err != null) {
+                        console.log(err);
+                    }
+                }
+            );
+        },
+        undefined, { logQR: false }
+    )
     .then((client) => start(client))
     .catch((erro) => {
         console.log(erro);
 
     });
 
+// Salvar os dados que estão vindo no message.body pra dar o relatório final da consulta marcada.
 
-    // Salvar os dados que estão vindo no message.body pra dar o relatório final da consulta marcada.
-
-let text = `Olá sou um Robô 😊, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
+let text = `🤖Olá sou um Robô🤖, sou programado para agendar consultas da clínica, Você deseja marcar uma consulta?\n
 Digite SIM ou NÃO
 `
 let qualDia = `Qual dia da semana você deseja realizar a sua consulta?\n
@@ -141,7 +167,7 @@ function start(client) {
             default: // Default será usado quando não entra em nem uma condição acima!!
                 client.sendText(message.from, `${text}`)
 
-                    .then((result) => {
+                .then((result) => {
                         console.log('Result: ', result); //return object success	
                     })
                     .catch((erro) => {
