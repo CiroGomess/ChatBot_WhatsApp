@@ -1,5 +1,5 @@
 {
-  "name": "ChatBot",
+  "name": "chatbot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.0",
     "venom-bot": "^2.0.14"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "nodemon": "^2.0.5"
   }
 }
