@@ -8,11 +8,11 @@ function newProperty(object, key, value) {
     return true
 }
 
-let data = {
-    name: "Júlio Cesar",
-    phone: "16616",
-    month: 11
-}
+let data = {}
+const date = new Date();
+const month = date.getMonth() + 1; // January is 0, February is 1, and so on.  
+
+newProperty(data, "month", month);
 
 // Formato de como devem ser os dados para registrar a consulta
 /* const data = {
@@ -216,6 +216,9 @@ function start(client) {
 
                 .then((result) => {
                         console.log('Result: ', result); //return object success	
+                        newProperty(data, "phone", result.to.remote.user);
+                        newProperty(data, "name", result.to.pushname);
+                        console.log(data);
                     })
                     .catch((erro) => {
                         console.error('Error when sending: ', erro); //return object error	
@@ -223,8 +226,6 @@ function start(client) {
 
                 break
         }
-
-        // await console.log(data);
         
         await api.post('schedules', data);
     });
