@@ -2,13 +2,20 @@
 // import { create, Whatsapp } from 'venom-bot';
 const venom = require('venom-bot');
 const api = require('./services/api');
+const utils = require('./utils/date');
 
 function newProperty(object, key, value) {
     object[key] = value
     return true
 }
 
-let data = {}
+let data = {
+    name: "",
+    phone: "",
+    day: 0,
+    month: 0,
+    hour: ""
+}
 const date = new Date();
 const month = date.getMonth() + 1; // January is 0, February is 1, and so on.  
 
@@ -31,7 +38,7 @@ venom
         'ZapBot OdontoAgenda',
         (base64Qr, asciiQR) => {
             console.log(asciiQR); // Optional to log the QR in the terminal
-            console.log("\n", typeof(asciiQR), "\n")
+            console.log("\n", typeof (asciiQR), "\n")
             var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
                 response = {};
 
@@ -46,7 +53,7 @@ venom
                 'out.png',
                 imageBuffer['data'],
                 'binary',
-                function(err) {
+                function (err) {
                     if (err != null) {
                         console.log(err);
                     }
@@ -88,7 +95,6 @@ Q = 16:30 Horas 🕐 R = 17:00 Horas 🕐
 
 function start(client) {
     client.onMessage(async (message) => {
-
         switch (message.body.toUpperCase()) {
 
             case 'SIM':
@@ -101,123 +107,110 @@ function start(client) {
 
             case '1':
                 client.sendText(message.from, `\n${info}\n${hora}`)
-                newProperty(data, "day", 1)
+                const segunda = utils.dayOfTheWeek("monday");
+                newProperty(data, "day", segunda)
                 break
 
             case '2':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                newProperty(data, "day", 2)
+                const terca = utils.dayOfTheWeek("tuesday");
+                newProperty(data, "day", terca)
                 break
 
             case '3':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                newProperty(data, "day", 3)
+                const quarta = utils.dayOfTheWeek("wednesday");
+                newProperty(data, "day", quarta)
                 break
 
             case '4':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                newProperty(data, "day", 4)
+                const quinta = utils.dayOfTheWeek("thursday");
+                newProperty(data, "day", quinta)
                 break
 
             case '5':
                 client.sendText(message.from, `\n${info}\n${hora}`)
-                newProperty(data, "day", 5)
+                const sexta = utils.dayOfTheWeek("friday");
+                newProperty(data, "day", sexta)
                 break
 
             case 'A':
-                client.sendText(message.from, `Sua consulta está marcada para as 07:00 horas`)
                 newProperty(data, "hour", '07:00:00')
                 break
 
             case 'B':
-                client.sendText(message.from, `Sua consulta está marcada para as 07:30 horas`)
                 newProperty(data, "hour", '07:30:00')
                 break
 
             case 'C':
-                client.sendText(message.from, `Sua consulta está marcada para as 08:00 horas`)
                 newProperty(data, "hour", '08:00:00')
                 break
 
             case 'D':
-                client.sendText(message.from, `Sua consulta está marcada para as 08:30 horas`)
                 newProperty(data, "hour", '08:30:00')
                 break
 
             case 'E':
-                client.sendText(message.from, `Sua consulta está marcada para as 09:00 horas`)
                 newProperty(data, "hour", '09:00:00')
                 break
 
             case 'F':
-                client.sendText(message.from, `Sua consulta está marcada para as 09:30 horas`)
                 newProperty(data, "hour", '09:30:00')
                 break
 
             case 'G':
-                client.sendText(message.from, `Sua consulta está marcada para as 10:00 horas`)
                 newProperty(data, "hour", '10:00:00')
                 break
 
             case 'H':
-                client.sendText(message.from, `Sua consulta está marcada para as 10:30 horas`)
                 newProperty(data, "hour", '10:30:00')
                 break
 
             case 'I':
-                client.sendText(message.from, `Sua consulta está marcada para as 11:00 horas`)
                 newProperty(data, "hour", '11:00:00')
                 break
 
             case 'J':
-                client.sendText(message.from, `Sua consulta está marcada para as 13:00 horas`)
                 newProperty(data, "hour", '13:00:00')
                 break
             case 'K':
-                client.sendText(message.from, `Sua consulta está marcada para as 13:30 horas`)
                 newProperty(data, "hour", '13:30:00')
                 break
 
             case 'L':
-                client.sendText(message.from, `Sua consulta está marcada para as 14:00 horas`)
                 newProperty(data, "hour", '14:00:00')
                 break
 
             case 'M':
-                client.sendText(message.from, `Sua consulta está marcada para as 14:30 horas`)
                 newProperty(data, "hour", '14:30:00')
                 break
             case 'N':
-                client.sendText(message.from, `Sua consulta está marcada para as 15:00 horas`)
                 newProperty(data, "hour", '15:00:00')
                 break
 
             case 'O':
-                client.sendText(message.from, `Sua consulta está marcada para as 15:30 horas`)
                 newProperty(data, "hour", '15:30:00')
                 break
 
             case 'P':
-                client.sendText(message.from, `Sua consulta está marcada para as 16:00 horas`)
                 newProperty(data, "hour", '16:00:00')
                 break
 
             case 'Q':
-                client.sendText(message.from, `Sua consulta está marcada para as 16:30 horas`)
                 newProperty(data, "hour", '16:30:00')
                 break
 
             case 'R':
-                client.sendText(message.from, `Sua consulta está marcada para as 17:00 horas`)
                 newProperty(data, "hour", '17:00:00')
                 break
             default: // Default será usado quando não entra em nem uma condição acima!!
                 client.sendText(message.from, `${text}`)
 
-                .then((result) => {
+                    .then((result) => {
                         console.log('Result: ', result); //return object success	
-                        newProperty(data, "phone", result.to.remote.user);
-                        newProperty(data, "name", result.to.pushname);
+                        newProperty(data, "phone", result.chat.id.user);
+                        newProperty(data, "name", result.chat.contact.pushname);
                         console.log(data);
                     })
                     .catch((erro) => {
@@ -226,7 +219,11 @@ function start(client) {
 
                 break
         }
-        
+
         await api.post('schedules', data);
+
+        const user = await api.get(`schedules/${data.phone}`);
+        const messageConsult = `Sua consulta está marcada para ${user.data.day}/${user.data.month} as ${user.data.hour} horas`;
+        await client.sendText(message.from, messageConsult);
     });
 }

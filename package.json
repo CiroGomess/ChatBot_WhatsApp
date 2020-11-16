@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.0",
+    "datejs": "^1.0.0-rc3",
     "venom-bot": "^2.0.14"
   },
   "devDependencies": {
