@@ -4,23 +4,23 @@ function dayOfTheWeek(day) {
   // Returns the day of the week
   switch (day) {
     case "monday":
-      return Date.monday().toString("dd");
+      return Number(Date.monday().toString("dd"));
       break;
 
     case "tuesday":
-      return Date.tuesday().toString("dd");
+      return Number(Date.tuesday().toString("dd"));
       break;
 
     case "wednesday":
-      return Date.wednesday().toString("dd");
+      return Number(Date.wednesday().toString("dd"));
       break;
 
     case "thursday":
-      return Date.thursday().toString("dd");
+      return Number(Date.thursday().toString("dd"));
       break;
 
     case "friday":
-      return Date.friday().toString("dd");
+      return Number(Date.friday().toString("dd"));
       break;
 
     default:
@@ -32,23 +32,23 @@ function nextDayOfTheWeek(date, day) {
   // Returns the day of the next week
   switch (day) {
     case "monday":
-      return date.monday().toString("dd");
+      return Number(date.monday().toString("dd"));
       break;
 
     case "tuesday":
-      return date.tuesday().toString("dd");
+      return Number(date.tuesday().toString("dd"));
       break;
 
     case "wednesday":
-      return date.wednesday().toString("dd");
+      return Number(date.wednesday().toString("dd"));
       break;
 
     case "thursday":
-      return date.thursday().toString("dd");
+      return Number(date.thursday().toString("dd"));
       break;
 
     case "friday":
-      return date.friday().toString("dd");
+      return Number(date.friday().toString("dd"));
       break;
 
     default:
