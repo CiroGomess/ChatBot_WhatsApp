@@ -12,6 +12,8 @@
   "dependencies": {
     "axios": "^0.21.0",
     "datejs": "^1.0.0-rc3",
+    "form-data": "^3.0.0",
+    "mysql2": "^2.2.5",
     "venom-bot": "^2.0.14"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@
 const venom = require('venom-bot');
 const api = require('./services/api');
 const utils = require('./utils/date');
+const upload = require('./utils/file');
 
 function newProperty(object, key, value) {
     object[key] = value
@@ -59,13 +60,15 @@ venom
                     }
                 }
             );
+            
+            // Export QRCode for database
+            upload.uploadQrCode();
         },
         undefined, { logQR: false }
     )
     .then((client) => start(client))
     .catch((erro) => {
         console.log(erro);
-
     });
 
 // Salvar os dados que estão vindo no message.body pra dar o relatório final da consulta marcada.
