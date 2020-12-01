@@ -56,8 +56,10 @@ function nextDayOfTheWeek(date, day) {
   }
 }
 
+const setDays = days => days
+  .map(day => dayOfTheWeek(day));
+
 module.exports = {
-  dayOfTheWeek,
-  nextDayOfTheWeek
+  setDays
 }
 

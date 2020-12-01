@@ -2,7 +2,7 @@
 // import { create, Whatsapp } from 'venom-bot';
 const venom = require('venom-bot');
 const api = require('./services/api');
-const utils = require('./utils/date');
+const week = require('./utils/date');
 const upload = require('./utils/file');
 
 function newProperty(object, key, value) {
@@ -19,6 +19,15 @@ let data = {
 }
 const date = new Date();
 const month = date.getMonth() + 1; // January is 0, February is 1, and so on.  
+
+const [segunda, terca, quarta, quinta, sexta] = week.setDays([
+    "monday", 
+    "tuesday", 
+    "wednesday", 
+    "thursday",
+    "friday"
+])
+
 
 newProperty(data, "month", month);
 
@@ -110,31 +119,26 @@ function start(client) {
 
             case '1':
                 client.sendText(message.from, `\n${info}\n${hora}`)
-                const segunda = utils.dayOfTheWeek("monday");
                 newProperty(data, "day", segunda)
                 break
 
             case '2':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                const terca = utils.dayOfTheWeek("tuesday");
                 newProperty(data, "day", terca)
                 break
 
             case '3':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                const quarta = utils.dayOfTheWeek("wednesday");
                 newProperty(data, "day", quarta)
                 break
 
             case '4':
                 client.sendText(message.from, `\n${info} \n${hora}`)
-                const quinta = utils.dayOfTheWeek("thursday");
                 newProperty(data, "day", quinta)
                 break
 
             case '5':
                 client.sendText(message.from, `\n${info}\n${hora}`)
-                const sexta = utils.dayOfTheWeek("friday");
                 newProperty(data, "day", sexta)
                 break
 
